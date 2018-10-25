@@ -16,10 +16,10 @@ namespace BestBooks.Models
         [MaxLength(50)]
         public string Name { get; set; }
 
-        
-        public ICollection<Author> AuthorId { get; set; }
+        [Required]
+        public Publisher Publisher { get; set; }
 
-        public Publisher PublisherId { get; set; }
+        public ICollection<Author> AuthorId { get; set; }
         public ICollection<Genre> GenreId { get; set; }
         public DateTime DatePublished { get; set; }
     }

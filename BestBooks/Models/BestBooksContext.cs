@@ -22,11 +22,7 @@ namespace BestBooks.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Book>()
-                .HasRequired(m => m.PublisherId)
-                .WithMany(s => s.Books)
-                .HasForeignKey(m => m.PublisherId);
-            modelBuilder.Entity<Book>()
+              modelBuilder.Entity<Book>()
                 .HasMany(m => m.AuthorId)
                 .WithMany(g => g.Books)
                 .Map(ca =>
@@ -45,6 +41,9 @@ namespace BestBooks.Models
                     ca.MapRightKey("GenreId");
                     ca.ToTable("BookGenres");
                 });
+
+            modelBuilder.Entity<Publisher>().HasMany(m => m.Books).WithRequired(n => n.Publisher);
+               
             
         }
     }

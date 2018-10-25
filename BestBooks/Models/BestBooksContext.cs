@@ -9,8 +9,10 @@ namespace BestBooks.Models
     public class BestBooksContext : DbContext
 
     {
-        public BestBooksContext() : base()
+        public BestBooksContext() : base("BestBooksDBConnectionString")
         {
+            Database.SetInitializer<BestBooksContext>(new CreateDatabaseIfNotExists<BestBooksContext>());
+            
         }
 
         public DbSet<Author> Authors { get; set; }
@@ -18,5 +20,32 @@ namespace BestBooks.Models
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Book> Books { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Book>()
+                .HasRequired(m => m.PublisherId)
+                .WithMany(s => s.Books)
+                .HasForeignKey(m => m.PublisherId);
+            modelBuilder.Entity<Book>()
+                .HasMany(m => m.AuthorId)
+                .WithMany(g => g.Books)
+                .Map(ca =>
+                {
+                    ca.MapLeftKey("BookId");
+                    ca.MapRightKey("AuthorId");
+                    ca.ToTable("BookAuthor");
+                }
+                );
+            modelBuilder.Entity<Book>()
+                .HasMany(m => m.GenreId)
+                .WithMany(a => a.Books)
+                .Map(ca =>
+                {
+                    ca.MapLeftKey("BookId");
+                    ca.MapRightKey("GenreId");
+                    ca.ToTable("BookGenres");
+                });
+            
+        }
     }
 }

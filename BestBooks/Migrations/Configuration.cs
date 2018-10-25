@@ -9,7 +9,7 @@ namespace BestBooks.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(BestBooks.Models.BestBooksContext context)

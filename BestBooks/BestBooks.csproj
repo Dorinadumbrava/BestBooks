@@ -161,6 +161,14 @@
     <Compile Include="Migrations\201810251102426_InitialMoles.Designer.cs">
       <DependentUpon>201810251102426_InitialMoles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810251121321_trythisone.cs" />
+    <Compile Include="Migrations\201810251121321_trythisone.Designer.cs">
+      <DependentUpon>201810251121321_trythisone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810251132302_hdhd.cs" />
+    <Compile Include="Migrations\201810251132302_hdhd.Designer.cs">
+      <DependentUpon>201810251132302_hdhd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\BestBooksContext.cs" />
@@ -228,6 +236,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810251102426_InitialMoles.resx">
       <DependentUpon>201810251102426_InitialMoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810251121321_trythisone.resx">
+      <DependentUpon>201810251121321_trythisone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810251132302_hdhd.resx">
+      <DependentUpon>201810251132302_hdhd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
